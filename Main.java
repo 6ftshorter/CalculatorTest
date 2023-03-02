@@ -1,5 +1,6 @@
 package Calculations;
 import java.util.Scanner;
+import java.lang.String;
 
 class calculator{
 	public calculator() {
@@ -26,32 +27,32 @@ class calculator{
 		}	
 	}
 	public double ScientificCalculator(double x,int i) {
-		if(i==1) {
-			double u =(double)(Math.sqrt(x));
-			return u;
-		}
-		else if(i==2) {
-			double u = (double)(Math.cos(x));
-			return u;
-		}
-		else if(i==3) {
-			double u = (double)(Math.sin(x));
-			return u;
-		}
-		else if(i==4) {
-			double u = (double)(Math.tan(x));
-			return u;
-		}
-		else if(i==5) {
-			double u = (double)(Math.log(x));
-			return u;
-		}
-		else {
-			System.out.println("Invalid input\n");
-			return(0D);
-	}   
+		switch(i) {
+		
+		
+		case 1: 
+				double u =(double)(Math.sqrt(x));
+				return u;
+		case 2:
+				 u = (double)(Math.cos(x));
+				return u;
+		case 3:
+				 u = (double)(Math.sin(x));
+				return u;
+		case 4:		
+				 u = (double)(Math.tan(x));
+				return u;
+		case 5:
+				 u = (double)(Math.log(x));
+				return u;
+		default:
+				System.out.println("Invalid input\n");
+				return(0D);
+		}   
 	
-	}
+		}
+					
+	
 }
 
 //MAIN function
@@ -75,8 +76,8 @@ public class Main {
 			
 				System.out.println("Enter your choice: '+','-','/' or '*'\n");
 				char option= in.next().charAt(0);
-			
-				System.out.println("Answer is:"+ obj.simpleCalculator(input1, input2, option));
+				double roundoff = (double)Math.round(obj.simpleCalculator(input1, input2, option)*100)/100;
+				System.out.println("Answer is:"+ roundoff);
 				break;
 				
 		case 2:
@@ -84,7 +85,8 @@ public class Main {
 				int sciNumber= in.nextInt();
 				System.out.println("Choose the action to be performed on the number from the ones given below.\n1.Square Root of the Number\n2.Cosine of the number\n3.Sine of the number\n4.Tangent of the number\n5.Log of the number\n");
 				int sciChoice= in.nextInt();
-				System.out.println("Answer is:"+obj.ScientificCalculator(sciNumber, sciChoice));
+				roundoff = (double)Math.round(obj.ScientificCalculator(sciNumber, sciChoice));
+				System.out.println("Answer is:"+roundoff);
 				break;
 				
 		default :
